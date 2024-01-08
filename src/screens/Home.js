@@ -2,6 +2,7 @@ import React from "react";
 import { SocialIcon } from "react-social-icons";
 import Typewriter from "typewriter-effect";
 import aritra from "./aritra.jpg";
+import Aritra from "./Aritra.pdf";
 
 
 
@@ -30,7 +31,7 @@ export default function Home() {
           <div>
             <a
               className="mt-4 mb-3 rounded btn "
-              href="Aritra cv.pdf"
+              href={Aritra}
               target="_blank"
             >
               Download CV
