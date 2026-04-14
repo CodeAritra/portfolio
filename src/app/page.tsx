@@ -100,10 +100,10 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-extrabold leading-[1.05] mb-6"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-extrabold leading-[1.05] mb-6"
             >
               Hi, I&apos;m{" "}
-              <span className="text-accent squiggle-underline">{profile.name}</span>
+              <span className="text-accent squiggle-underline whitespace-nowrap">{profile.name}</span>
             </motion.h1>
 
             <motion.p
