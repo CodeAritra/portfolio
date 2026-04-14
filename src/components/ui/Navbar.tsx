@@ -4,8 +4,10 @@ import { motion } from "framer-motion";
 import { ThemeToggle } from "./ThemeToggle";
 
 const navLinks = [
-  { label: "Work", href: "#work" },
-  { label: "About", href: "#about" },
+  { label: "About", href: "#hero" },
+  { label: "Experience", href: "#experience" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" },
 ];
 

@@ -2,7 +2,11 @@
 import React, { useEffect, useState, memo } from 'react';
 
 // --- Type Definitions ---
-type IconType = 'html' | 'css' | 'javascript' | 'react' | 'node' | 'tailwind';
+type IconType = 
+  | 'html' | 'css' | 'javascript' | 'typescript' 
+  | 'react' | 'node' | 'tailwind' | 'nextjs' 
+  | 'mongodb' | 'express' | 'socketio' | 'git'
+  | 'python' | 'docker' | 'aws' | 'redis' | 'postgresql' | 'figma';
 
 type GlowColor = 'cyan' | 'purple';
 
@@ -87,7 +91,103 @@ const iconComponents: Record<IconType, { component: () => React.JSX.Element; col
       </svg>
     ),
     color: '#06B6D4'
-  }
+  },
+  typescript: {
+    component: () => (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
+        <path d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0H1.125zm17.363 9.75c.612 0 1.154.037 1.627.111v2.111c-.352-.093-.76-.148-1.222-.148-.796 0-1.389.26-1.778.778-.389.519-.583 1.259-.583 2.222v5.305h-2.111V9.889h2.056v1.167c.259-.444.602-.787 1.028-1.028.426-.24.963-.37 1.611-.37zM7.111 6c.352 0 .648.111.889.333.241.222.361.519.361.889 0 .37-.12.671-.361.903-.241.231-.537.347-.889.347-.37 0-.671-.116-.903-.347-.231-.232-.347-.533-.347-.903 0-.37.116-.667.347-.889.232-.222.533-.333.903-.333zm-1.056 3.889h2.111v10.25H6.055V9.889z" fill="#3178C6"/>
+      </svg>
+    ),
+    color: '#3178C6'
+  },
+  mongodb: {
+    component: () => (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
+        <path d="M17.19 12.19c.47.63.7 1.34.7 2.13 0 1.95-1.39 3.51-3.11 3.51-1.72 0-3.11-1.56-3.11-3.51 0-.79.23-1.5.7-2.13L14.78 9l2.41 3.19zM14.78 0C11.13 0 8.07 1.99 6.42 4.96c-.35.63-.61 1.3-.78 2h-.01c-.04.18-.08.36-.1.54C5.2 6.08 4.3 5 4.3 5s-.2 1.4.6 3.3c-.6.9-1 1.9-1.2 3-.1.5-.1 1.1-.1 1.6 0 5.1 3.5 10 9.1 11.1 1.1.2 1.1.2 1.1.2s0 0 1.1-.2c5.6-1.1 9.1-6 9.1-11.1 0-.5 0-1.1-.1-1.6-.2-1.1-.6-2.1-1.2-3 .8-1.9.6-3.3.6-3.3s-.9 1.08-1.23 2.5c-.02-.18-.06-.36-.1-.54h-.01c-.17-.7-.43-1.37-.78-2C19.5 1.99 16.43 0 14.78 0zm0 2.4c1.17 0 2.22.46 2.97 1.19.49.48.88 1.07 1.13 1.73.23.6.35 1.25.35 1.93 0 .15-.01.29-.02.43-.01.07-.02.13-.03.2-1.28-.68-2.61-1.02-3.95-1.02-1.34 0-2.67.34-3.95 1.02-.01-.07-.02-.13-.03-.2-.01-.14-.02-.28-.02-.43 0-.68.12-1.33.35-1.93.25-.66.64-1.25 1.13-1.73.75-.73 1.8-1.19 2.97-1.19z" fill="#47A248"/>
+      </svg>
+    ),
+    color: '#47A248'
+  },
+  express: {
+    component: () => (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
+        <path d="M24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12zm-4.75 3.5l-2.25-3.5L14.75 15.5h-1.5l2.25-3.5-2.25-3.5h1.5l1.5 2.25 1.5-2.25h1.5L17 12l2.25 3.5h-1.5zM11 15.5h-1.5V11l-1.5 1.5V11l1.5-1.5h1.5v6zm-4.5 0h-3v-6h3v1.5h-1.5v1h1.5V13h-1.5v1h1.5v1.5z" fill="#888888"/>
+      </svg>
+    ),
+    color: '#888888'
+  },
+  nextjs: {
+    component: () => (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
+        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.162 17.514l-4.75-6.142v6.142H11.08v-9.39h1.332l4.896 6.326V8.124h1.332v9.39h-1.478z" fill="#000000"/>
+      </svg>
+    ),
+    color: '#000000'
+  },
+  socketio: {
+    component: () => (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
+        <path d="M24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12zm-3.5 0L12 3.5 3.5 12 12 20.5 20.5 12zm-4.5 0l-4 4-4-4 4-4 4 4z" fill="#010101"/>
+      </svg>
+    ),
+    color: '#010101'
+  },
+  git: {
+    component: () => (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
+        <path d="M23.546 10.93L13.067.452c-.604-.604-1.582-.604-2.187 0L8.855 2.47c-.002.003-.005.007-.007.01l-3.033 3.033c-.001.001-.002.003-.003.004L.452 10.93c-.604.605-.604 1.584 0 2.189l10.48 10.477c.604.604 1.582.604 2.186 0l10.428-10.428c.604-.603.604-1.582 0-2.187zM12.122 17.332c-.546.546-1.432.546-1.979 0l-3.618-3.617c-.546-.547-.546-1.432 0-1.979.547-.546 1.432-.546 1.979 0l3.618 3.618c.546.547.546 1.432 0 1.978zm4.445-4.444c-.546.547-1.432.547-1.979 0l-3.618-3.618c-.546-.546-.546-1.432 0-1.978.547-.547 1.432-.547 1.979 0l3.618 3.618c.546.546.546 1.432 0 1.978z" />
+      </svg>
+    ),
+    color: '#F05032'
+  },
+  python: {
+    component: () => (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
+        <path d="M11.97.062c-1.028.016-2 .168-2.687.406-1.438.5-1.5 1.563-1.5 1.563v1.594h4.594v.625h-6.188s-2.03.219-2.5 1.719c-.469 1.5-.031 3.5.031 3.5l1.625.031V7.125s.031-1.312 1.375-1.312h4.5c1.344 0 1.312-1.375 1.312-1.375V1.78s-.03-1.062-1.47-1.594c-.656-.25-1.531-.14-2.562-.125zm-2.063 1.03c.313 0 .563.25.563.563 0 .313-.25.563-.563.563a.561.561 0 0 1-.563-.563c0-.313.25-.563.563-.563zm-.125 7.156c-1.438-.5-1.5-1.563-1.5-1.563V5.094h-4.594v-.625h6.188s2.03-.219 2.5-1.719c.469-1.5.031-3.5-.031-3.5l-1.625-.031v2.375s-.031 1.312-1.375 1.312h-4.5c-1.344 0-1.312 1.375-1.312 1.375V9.47s.03 1.062 1.47 1.594c.656.25 1.531.14 2.562.125h.125a2.12 2.12 0 0 0-.125-3.156z" fill="#3776AB"/>
+      </svg>
+    ),
+    color: '#3776AB'
+  },
+  docker: {
+    component: () => (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
+        <path d="M13.983 11.078h2.119c.102 0 .186-.083.186-.185V9.034a.186.186 0 00-.186-.186h-2.119a.186.186 0 00-.185.186v1.858c0 .102.083.185.185.185m-2.954-5.43h2.118c.103 0 .187-.083.187-.186V3.601a.187.187 0 00-.187-.186h-2.118a.186.186 0 00-.185.186v1.858c0 .102.082.185.185.185m2.954 2.714h2.119c.102 0 .186-.083.186-.186V6.32a.186.186 0 00-.186-.186h-2.119a.186.186 0 00-.185.186v1.859c0 .102.083.185.185.185m-2.954 2.714h2.118c.103 0 .187-.083.187-.185V9.034a.187.187 0 00-.187-.186h-2.118a.186.186 0 00-.185.186v1.858c0 .102.082.185.185.185m-2.955-2.714h2.119c.102 0 .185-.083.185-.186V6.32a.186.186 0 00-.185-.186h-2.119a.186.186 0 00-.186.186v1.859c0 .102.084.185.186.185m-2.954 2.714h2.119c.102 0 .185-.083.185-.185V9.034a.186.186 0 00-.185-.186h-2.119a.186.186 0 00-.186.186v1.858c0 .102.084.185.186.185m0-2.714h2.119c.102 0 .185-.083.185-.186V6.32a.186.186 0 00-.185-.186h-2.119a.186.186 0 00-.186.186v1.859c0 .102.084.185.186.185m0-2.715h2.119c.102 0 .185-.083.185-.186V3.601a.186.186 0 00-.185-.186h-2.119a.186.186 0 00-.186.186v1.858c0 .102.084.185.186.185M.663 8.006c.102 0 .185-.083.185-.186V5.961a.186.186 0 00-.185-.186H.186A.186.186 0 000 5.961v1.859c0 .102.083.185.186.185h.477z" fill="#2496ED" />
+      </svg>
+    ),
+    color: '#2496ED'
+  },
+  aws: {
+    component: () => (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
+        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1.125 15.5h-1.5V11l-1.5 1.5V11l1.5-1.5h1.5v6zm5.25-2.25c.414 0 .75.336.75.75s-.336.75-.75.75-.75-.336-.75-.75.336-.75.75-.75z" fill="#FF9900"/>
+      </svg>
+    ),
+    color: '#FF9900'
+  },
+  redis: {
+    component: () => (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
+        <path d="M12 0L1.5 6v12L12 24l10.5-6V6L12 0zm0 4.5L18 8l-6 3.5L6 8l6-3.5zm0 15L6 16v-4.5l6 3.5 6-3.5V16l-6 3.5z" fill="#DC382D"/>
+      </svg>
+    ),
+    color: '#DC382D'
+  },
+  postgresql: {
+    component: () => (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
+        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.162 17.514l-4.75-6.142v6.142H11.08v-9.39h1.332l4.896 6.326V8.124h1.332v9.39h-1.478z" fill="#336791"/>
+      </svg>
+    ),
+    color: '#336791'
+  },
+  figma: {
+    component: () => (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
+        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm2.5 14.5c.828 0 1.5.672 1.5 1.5s-.672 1.5-1.5 1.5-1.5-.672-1.5-1.5.672-1.5 1.5-1.5zm0-5c.828 0 1.5.672 1.5 1.5s-.672 1.5-1.5 1.5-1.5-.672-1.5-1.5.672-1.5 1.5-1.5z" fill="#F24E1E"/>
+      </svg>
+    ),
+    color: '#F24E1E'
+  },
 };
 
 // --- Memoized Icon Component ---
@@ -99,68 +199,29 @@ SkillIcon.displayName = 'SkillIcon';
 
 // --- Configuration for the Orbiting Skills ---
 const skillsConfig: SkillConfig[] = [
-  // Inner Orbit
-  { 
-    id: 'html',
-    orbitRadius: 100, 
-    size: 40, 
-    speed: 1, 
-    iconType: 'html', 
-    phaseShift: 0, 
-    glowColor: 'cyan',
-    label: 'HTML5'
-  },
-  { 
-    id: 'css',
-    orbitRadius: 100, 
-    size: 45, 
-    speed: 1, 
-    iconType: 'css', 
-    phaseShift: (2 * Math.PI) / 3, 
-    glowColor: 'cyan',
-    label: 'CSS3'
-  },
-  { 
-    id: 'javascript',
-    orbitRadius: 100, 
-    size: 40, 
-    speed: 1, 
-    iconType: 'javascript', 
-    phaseShift: (4 * Math.PI) / 3, 
-    glowColor: 'cyan',
-    label: 'JavaScript'
-  },
-  // Outer Orbit
-  { 
-    id: 'react',
-    orbitRadius: 180, 
-    size: 50, 
-    speed: -0.6, 
-    iconType: 'react', 
-    phaseShift: 0, 
-    glowColor: 'purple',
-    label: 'React'
-  },
-  { 
-    id: 'node',
-    orbitRadius: 180, 
-    size: 45, 
-    speed: -0.6, 
-    iconType: 'node', 
-    phaseShift: (2 * Math.PI) / 3, 
-    glowColor: 'purple',
-    label: 'Node.js'
-  },
-  { 
-    id: 'tailwind',
-    orbitRadius: 180, 
-    size: 40, 
-    speed: -0.6, 
-    iconType: 'tailwind', 
-    phaseShift: (4 * Math.PI) / 3, 
-    glowColor: 'purple',
-    label: 'Tailwind CSS'
-  },
+  // Inner Orbit: 4 skills
+  { id: 'html', orbitRadius: 80, size: 38, speed: 1.2, iconType: 'html', phaseShift: 0, glowColor: 'cyan', label: 'HTML5' },
+  { id: 'css', orbitRadius: 80, size: 40, speed: 1.2, iconType: 'css', phaseShift: Math.PI / 2, glowColor: 'cyan', label: 'CSS3' },
+  { id: 'javascript', orbitRadius: 80, size: 38, speed: 1.2, iconType: 'javascript', phaseShift: Math.PI, glowColor: 'cyan', label: 'JavaScript' },
+  { id: 'typescript', orbitRadius: 80, size: 40, speed: 1.2, iconType: 'typescript', phaseShift: (3 * Math.PI) / 2, glowColor: 'cyan', label: 'TypeScript' },
+  
+  // Middle Orbit: 6 skills
+  { id: 'react', orbitRadius: 160, size: 48, speed: -0.8, iconType: 'react', phaseShift: 0, glowColor: 'purple', label: 'React' },
+  { id: 'node', orbitRadius: 160, size: 42, speed: -0.8, iconType: 'node', phaseShift: (Math.PI / 3), glowColor: 'purple', label: 'Node.js' },
+  { id: 'tailwind', orbitRadius: 160, size: 38, speed: -0.8, iconType: 'tailwind', phaseShift: (2 * Math.PI / 3), glowColor: 'purple', label: 'Tailwind' },
+  { id: 'mongodb', orbitRadius: 160, size: 40, speed: -0.8, iconType: 'mongodb', phaseShift: Math.PI, glowColor: 'purple', label: 'MongoDB' },
+  { id: 'express', orbitRadius: 160, size: 36, speed: -0.8, iconType: 'express', phaseShift: (4 * Math.PI / 3), glowColor: 'purple', label: 'Express' },
+  { id: 'nextjs', orbitRadius: 160, size: 42, speed: -0.8, iconType: 'nextjs', phaseShift: (5 * Math.PI / 3), glowColor: 'purple', label: 'Next.js' },
+
+  // Outer Orbit: 8 skills
+  { id: 'socketio', orbitRadius: 240, size: 38, speed: 0.5, iconType: 'socketio', phaseShift: 0, glowColor: 'cyan', label: 'Socket.io' },
+  { id: 'git', orbitRadius: 240, size: 36, speed: 0.5, iconType: 'git', phaseShift: (Math.PI / 4), glowColor: 'cyan', label: 'Git' },
+  { id: 'python', orbitRadius: 240, size: 40, speed: 0.5, iconType: 'python', phaseShift: (2 * Math.PI / 4), glowColor: 'cyan', label: 'Python' },
+  { id: 'docker', orbitRadius: 240, size: 38, speed: 0.5, iconType: 'docker', phaseShift: (3 * Math.PI / 4), glowColor: 'cyan', label: 'Docker' },
+  { id: 'aws', orbitRadius: 240, size: 40, speed: 0.5, iconType: 'aws', phaseShift: Math.PI, glowColor: 'cyan', label: 'AWS' },
+  { id: 'redis', orbitRadius: 240, size: 38, speed: 0.5, iconType: 'redis', phaseShift: (5 * Math.PI / 4), glowColor: 'cyan', label: 'Redis' },
+  { id: 'postgresql', orbitRadius: 240, size: 40, speed: 0.5, iconType: 'postgresql', phaseShift: (6 * Math.PI / 4), glowColor: 'cyan', label: 'PostgreSQL' },
+  { id: 'figma', orbitRadius: 240, size: 38, speed: 0.5, iconType: 'figma', phaseShift: (7 * Math.PI / 4), glowColor: 'cyan', label: 'Figma' },
 ];
 
 // --- Memoized Orbiting Skill Component ---
@@ -257,14 +318,18 @@ const GlowingOrbitPath = memo(({ radius, glowColor = 'cyan', animationDelay = 0 
   );
 });
 GlowingOrbitPath.displayName = 'GlowingOrbitPath';
-
 // --- Main Component ---
 export default function OrbitingSkills() {
   const [time, setTime] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused || !mounted) return;
 
     let animationFrameId: number;
     let lastTime = performance.now();
@@ -282,8 +347,9 @@ export default function OrbitingSkills() {
   }, [isPaused]);
 
   const orbitConfigs: Array<{ radius: number; glowColor: GlowColor; delay: number }> = [
-    { radius: 100, glowColor: 'cyan', delay: 0 },
-    { radius: 180, glowColor: 'purple', delay: 1.5 }
+    { radius: 80, glowColor: 'cyan', delay: 0 },
+    { radius: 160, glowColor: 'purple', delay: 0.8 },
+    { radius: 240, glowColor: 'cyan', delay: 1.6 }
   ];
 
   return (
@@ -297,7 +363,7 @@ export default function OrbitingSkills() {
       </div>
 
       <div 
-        className="relative w-[calc(100vw-40px)] h-[calc(100vw-40px)] md:w-[450px] md:h-[450px] flex items-center justify-center"
+        className="relative w-[calc(100vw-40px)] h-[calc(100vw-40px)] md:w-[600px] md:h-[600px] flex items-center justify-center"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
@@ -319,28 +385,32 @@ export default function OrbitingSkills() {
             </svg>
           </div>
         </div>
-
-        {/* Render glowing orbit paths */}
-        {orbitConfigs.map((config) => (
-          <GlowingOrbitPath
-            key={`path-${config.radius}`}
-            radius={config.radius}
-            glowColor={config.glowColor}
-            animationDelay={config.delay}
-          />
-        ))}
-
-        {/* Render orbiting skill icons */}
-        {skillsConfig.map((config) => {
-          const angle = time * config.speed + (config.phaseShift || 0);
-          return (
-            <OrbitingSkill
-              key={config.id}
-              config={config}
-              angle={angle}
-            />
-          );
-        })}
+ 
+        {mounted && (
+          <>
+            {/* Render glowing orbit paths */}
+            {orbitConfigs.map((config) => (
+              <GlowingOrbitPath
+                key={`path-${config.radius}`}
+                radius={config.radius}
+                glowColor={config.glowColor}
+                animationDelay={config.delay}
+              />
+            ))}
+ 
+            {/* Render orbiting skill icons */}
+            {skillsConfig.map((config) => {
+              const angle = time * config.speed + (config.phaseShift || 0);
+              return (
+                <OrbitingSkill
+                  key={config.id}
+                  config={config}
+                  angle={angle}
+                />
+              );
+            })}
+          </>
+        )}
       </div>
     </div>
   );

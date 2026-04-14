@@ -1,13 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   ArrowRight,
   ArrowUpRight,
   Code,
   Briefcase,
   MessageCircle,
-  Shapes,
   Mail,
   Sparkles,
   Calendar,
@@ -27,7 +27,6 @@ const iconMap: Record<string, React.ReactNode> = {
   Code: <Code strokeWidth={2.5} />,
   Briefcase: <Briefcase strokeWidth={2.5} />,
   MessageCircle: <MessageCircle strokeWidth={2.5} />,
-  Shapes: <Shapes strokeWidth={2.5} />,
   FaGithub: <FaGithub size={22} />,
   FaLinkedin: <FaLinkedin size={22} />,
   FaFileLines: <FaFileLines size={22} />,
@@ -162,10 +161,14 @@ export default function Home() {
             <div className="absolute inset-4 bg-secondary/10 rounded-3xl rotate-3 z-0" />
 
             <div className="relative z-10 p-4 md:p-8">
-              <div className="aspect-square bg-quaternary border-4 border-foreground rounded-[32px] md:rounded-[48px] overflow-hidden shadow-pop flex items-center justify-center">
-                <Shapes
-                  className="w-1/2 h-1/2 text-foreground/15"
-                  strokeWidth={1.5}
+              <div className="aspect-square bg-quaternary border-4 border-foreground rounded-[32px] md:rounded-[48px] overflow-hidden shadow-pop relative">
+                <Image
+                  src="/ari.jpeg"
+                  alt={profile.name}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover"
+                  priority
                 />
               </div>
             </div>
@@ -186,7 +189,7 @@ export default function Home() {
         title="Experience"
         subtitle="Where I've been building and shipping."
         className="bg-muted/10"
-        id="about"
+        id="experience"
       >
         <div className="relative">
           {/* Vertical timeline line */}
@@ -236,7 +239,7 @@ export default function Home() {
       </Section>
 
       {/* ═══ Skills ═════════════════════════════════ */}
-      <Section title="Skills"
+      <Section id="skills" title="Skills"
         subtitle="Technologies and tools I work with every day."
         className="relative py-20 md:py-28 overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 md:px-12">
@@ -257,7 +260,7 @@ export default function Home() {
         title="Recent Work"
         subtitle="A selection of projects I&apos;m proud of."
         className="bg-muted/10"
-        id="work"
+        id="projects"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
           {projects.map((project, i) => (
