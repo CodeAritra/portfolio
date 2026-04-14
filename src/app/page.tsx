@@ -13,6 +13,7 @@ import {
   Calendar,
   Building2,
 } from "lucide-react";
+import { FaGithub, FaLinkedin, FaFileLines } from "react-icons/fa6";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
@@ -27,6 +28,9 @@ const iconMap: Record<string, React.ReactNode> = {
   Briefcase: <Briefcase strokeWidth={2.5} />,
   MessageCircle: <MessageCircle strokeWidth={2.5} />,
   Shapes: <Shapes strokeWidth={2.5} />,
+  FaGithub: <FaGithub size={22} />,
+  FaLinkedin: <FaLinkedin size={22} />,
+  FaFileLines: <FaFileLines size={22} />,
 };
 
 const colorMap: Record<string, string> = {
