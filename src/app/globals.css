@@ -1,49 +1,139 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import "tailwindcss";
+
+/* ─── Design Tokens (Tailwind 4 @theme) ──────────────────────── */
+@theme {
+  /* Colors — Light mode base */
+  --color-background: #FFFDF5;
+  --color-foreground: #1E293B;
+  --color-muted: #F1F5F9;
+  --color-muted-foreground: #64748B;
+  --color-accent: #8B5CF6;
+  --color-accent-foreground: #FFFFFF;
+  --color-secondary: #F472B6;
+  --color-tertiary: #FBBF24;
+  --color-quaternary: #34D399;
+  --color-border: #E2E8F0;
+  --color-input: #FFFFFF;
+  --color-card: #FFFFFF;
+  --color-ring: #8B5CF6;
+
+  /* Radius — Chunky & playful */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+
+  /* Typography — connected to Next.js font variables */
+  --font-heading: var(--font-outfit), "Outfit", system-ui, sans-serif;
+  --font-body: var(--font-plus-jakarta), "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-sans: var(--font-plus-jakarta), "Plus Jakarta Sans", system-ui, sans-serif;
+
+  /* Shadows — Hard "Pop" shadows (no blur) */
+  --shadow-pop: 4px 4px 0px 0px #1E293B;
+  --shadow-pop-hover: 6px 6px 0px 0px #1E293B;
+  --shadow-pop-active: 2px 2px 0px 0px #1E293B;
+  --shadow-pop-lg: 8px 8px 0px 0px #E2E8F0;
+  --shadow-pop-pink: 8px 8px 0px 0px #F472B6;
+
+  /* Animations */
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-@media (prefers-color-scheme: dark) {
+/* ─── Base layer ─────────────────────────────────────────────── */
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #FFFDF5;
+    --foreground: #1E293B;
+    --shadow-color: #1E293B;
+  }
+
+  .dark {
+    --background: #0F172A;
+    --foreground: #F8FAFC;
+    --shadow-color: #475569;
+
+    --color-background: #0F172A;
+    --color-foreground: #F8FAFC;
+    --color-card: #1E293B;
+    --color-border: #334155;
+    --color-muted: #1E293B;
+    --color-muted-foreground: #94A3B8;
+    --color-input: #1E293B;
+  }
+
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Respect motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
-html {
-  height: 100%;
-}
+/* ─── Utility layer ──────────────────────────────────────────── */
+@layer utilities {
+  /* Dot grid background */
+  .bg-dot-grid {
+    background-image: radial-gradient(circle, #CBD5E1 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
+  .dark .bg-dot-grid {
+    background-image: radial-gradient(circle, #334155 1px, transparent 1px);
+  }
 
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  /* Hard shadows — using CSS variable for dark mode adaptability */
+  .shadow-pop {
+    box-shadow: 4px 4px 0px 0px var(--shadow-color);
+  }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
+  .shadow-pop-lg {
+    box-shadow: 8px 8px 0px 0px var(--color-border);
+  }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+  .shadow-pop-pink {
+    box-shadow: 8px 8px 0px 0px #F472B6;
+  }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+  .hover\:shadow-pop-hover:hover {
+    box-shadow: 6px 6px 0px 0px var(--shadow-color);
+  }
+
+  .active\:shadow-pop-active:active {
+    box-shadow: 2px 2px 0px 0px var(--shadow-color);
+  }
+
+  /* Wiggle animation for icons on hover */
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(3deg); }
+    75% { transform: rotate(-3deg); }
+  }
+
+  .hover\:animate-wiggle:hover {
+    animation: wiggle 0.4s ease-in-out;
+  }
+
+  /* Squiggle underline decoration */
+  .squiggle-underline {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 8'%3E%3Cpath d='M0 4 Q15 0 30 4 Q45 8 60 4 Q75 0 90 4 Q105 8 120 4' fill='none' stroke='%23F472B6' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-position: bottom;
+    background-size: 120px 8px;
+    padding-bottom: 10px;
   }
 }

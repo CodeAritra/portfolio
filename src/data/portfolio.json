@@ -1,0 +1,74 @@
+{
+  "profile": {
+    "name": "Stitch Dev",
+    "role": "Creative Developer & UI Specialist",
+    "bio": "I build high-energy, tactile digital experiences with clear grids and wild decorations. I believe the web should be fun, interactive, and smile at you.",
+    "avatar": "/avatar.png",
+    "email": "hello@stitchdev.io",
+    "socials": [
+      { "platform": "Twitter", "url": "#", "icon": "MessageCircle" },
+      { "platform": "GitHub", "url": "#", "icon": "Code" },
+      { "platform": "LinkedIn", "url": "#", "icon": "Briefcase" }
+    ]
+  },
+  "marquee": [
+    "React", "Next.js", "TypeScript", "Framer Motion", "Tailwind CSS",
+    "Design Systems", "UI/UX", "Creative Code", "Accessibility"
+  ],
+  "experience": [
+    {
+      "role": "Senior Frontend Engineer",
+      "company": "Geometric Labs",
+      "period": "2024 — Present",
+      "description": "Lead engineer on a design-system-first component library serving 40+ internal products. Championed accessibility audits and reduced bundle size by 35%.",
+      "color": "accent"
+    },
+    {
+      "role": "UI Engineer",
+      "company": "Pixel Playground Inc.",
+      "period": "2022 — 2024",
+      "description": "Built interactive marketing pages and a headless CMS frontend using Next.js and Framer Motion. Shipped 12 campaigns with zero accessibility regressions.",
+      "color": "secondary"
+    },
+    {
+      "role": "Frontend Developer",
+      "company": "Creative Stack Studio",
+      "period": "2020 — 2022",
+      "description": "Developed responsive web apps for startups across fintech and edtech. Introduced Tailwind CSS and component-driven architecture to the team.",
+      "color": "tertiary"
+    }
+  ],
+  "skills": [
+    { "name": "React / Next.js", "level": 95, "color": "accent" },
+    { "name": "TypeScript", "level": 90, "color": "secondary" },
+    { "name": "Tailwind CSS", "level": 92, "color": "tertiary" },
+    { "name": "Framer Motion", "level": 85, "color": "quaternary" },
+    { "name": "Design Systems", "level": 88, "color": "accent" },
+    { "name": "Accessibility (a11y)", "level": 80, "color": "secondary" },
+    { "name": "Node.js / APIs", "level": 75, "color": "tertiary" },
+    { "name": "Figma / UI Design", "level": 82, "color": "quaternary" }
+  ],
+  "projects": [
+    {
+      "title": "Cosmic UI Kit",
+      "description": "A comprehensive set of geometric primitives and composable components for modern design systems.",
+      "tags": ["React", "Typescript", "Design Tokens"],
+      "color": "accent",
+      "url": "#"
+    },
+    {
+      "title": "Playground App",
+      "description": "An interactive canvas for testing tactile buttons, physics-driven objects, and delightful micro-interactions.",
+      "tags": ["Next.js", "Canvas API", "Framer Motion"],
+      "color": "secondary",
+      "url": "#"
+    },
+    {
+      "title": "Grid Master",
+      "description": "Visualize and prototype complex responsive layouts with a playful drag-and-drop dot-grid interface.",
+      "tags": ["Next.js", "Tailwind", "DnD Kit"],
+      "color": "tertiary",
+      "url": "#"
+    }
+  ]
+}
