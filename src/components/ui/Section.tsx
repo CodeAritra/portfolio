@@ -22,7 +22,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={cn("py-20 md:py-28 px-6 md:px-12 relative overflow-hidden", className)}
+      className={cn("py-20 md:py-28 px-6 md:px-12 relative overflow-hidden scroll-mt-[var(--nav-height)]", className)}
     >
       <div className="max-w-6xl mx-auto relative z-10">
         {title && (

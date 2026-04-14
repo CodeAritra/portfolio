@@ -16,6 +16,8 @@ import {
 import { FaGithub, FaLinkedin, FaFileLines } from "react-icons/fa6";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
+import { THEME_COLORS, ThemeColorKey } from "@/lib/colors";
+import { cn } from "@/lib/utils";
 import { Section } from "@/components/ui/Section";
 import { Navbar } from "@/components/ui/Navbar";
 import { Marquee } from "@/components/ui/Marquee";
@@ -30,13 +32,6 @@ const iconMap: Record<string, React.ReactNode> = {
   FaGithub: <FaGithub size={22} />,
   FaLinkedin: <FaLinkedin size={22} />,
   FaFileLines: <FaFileLines size={22} />,
-};
-
-const colorMap: Record<string, string> = {
-  accent: "bg-accent",
-  secondary: "bg-secondary",
-  tertiary: "bg-tertiary",
-  quaternary: "bg-quaternary",
 };
 
 /* ─── Floating shape component ────────────────────── */
@@ -59,7 +54,13 @@ function FloatingShape({
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ delay, duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
-      className={`absolute ${size} ${colorMap[color]} border-2 border-foreground ${shapeClass} shadow-pop hidden md:block ${className}`}
+      className={cn(
+        "absolute border-2 border-foreground shadow-pop hidden md:block",
+        size,
+        THEME_COLORS[color as ThemeColorKey].bg,
+        shapeClass,
+        className
+      )}
     />
   );
 }
@@ -73,7 +74,7 @@ export default function Home() {
       <Navbar />
 
       {/* ═══ Hero ═══════════════════════════════════ */}
-      <Section className="min-h-screen flex items-center pt-28 md:pt-36" id="hero">
+      <Section className="flex items-center pt-28 md:pt-36" id="hero">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left — Text */}
           <div className="relative">
@@ -124,7 +125,7 @@ export default function Home() {
                 Get In Touch
                 <ArrowRight className="w-5 h-5" strokeWidth={2.5} />
               </Button>
-              <Button variant="secondary" href="#work">
+              <Button variant="secondary" href="#projects">
                 View My Work
               </Button>
             </motion.div>
@@ -168,6 +169,7 @@ export default function Home() {
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover"
+                  style={{ objectPosition: "50% 15%" }}
                   priority
                 />
               </div>
@@ -207,12 +209,15 @@ export default function Home() {
               >
                 {/* Timeline dot */}
                 <div
-                  className={`hidden md:flex absolute left-4 md:left-5 top-6 w-7 h-7 ${colorMap[exp.color]} border-2 border-foreground rounded-full items-center justify-center shadow-pop z-10`}
+                  className={cn(
+                    "hidden md:flex absolute left-4 md:left-5 top-6 w-7 h-7 border-2 border-foreground rounded-full items-center justify-center shadow-pop z-10",
+                    THEME_COLORS[exp.color as ThemeColorKey].bg
+                  )}
                 >
                   <div className="w-2 h-2 bg-white rounded-full" />
                 </div>
 
-                <Card delay={i * 0.12} shadowColor={i === 1 ? "pink" : "default"}>
+                <Card delay={i * 0.12} shadowColor={exp.color as ThemeColorKey}>
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-3">
                     <div>
                       <h3 className="text-xl md:text-2xl font-heading font-bold">
@@ -223,7 +228,11 @@ export default function Home() {
                         {exp.company}
                       </p>
                     </div>
-                    <span className={`inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider px-3 py-1.5 ${colorMap[exp.color]} text-foreground border-2 border-foreground rounded-full shadow-[2px_2px_0px_var(--shadow-color)] whitespace-nowrap self-start`}>
+                    <span className={cn(
+                      "inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider px-3 py-1.5 text-foreground border-2 border-foreground rounded-full shadow-[2px_2px_0px_var(--shadow-color)] whitespace-nowrap self-start",
+                      THEME_COLORS[exp.color as ThemeColorKey].bg,
+                      THEME_COLORS[exp.color as ThemeColorKey].text
+                    )}>
                       <Calendar className="w-3 h-3" strokeWidth={2.5} />
                       {exp.period}
                     </span>
@@ -266,24 +275,42 @@ export default function Home() {
           {projects.map((project, i) => (
             <Card
               key={project.title}
-              className="overflow-hidden !p-0"
+              className="overflow-hidden !p-0 h-full flex flex-col"
               delay={i * 0.12}
-              shadowColor={i === 1 ? "pink" : "default"}
+              shadowColor={project.color as ThemeColorKey}
             >
-              {/* Colored header area */}
+              {/* Card header / Illustration */}
               <div
-                className={`h-44 ${colorMap[project.color]} flex items-center justify-center relative overflow-hidden`}
+                className={cn(
+                  "h-48 relative overflow-hidden flex items-center justify-center",
+                  THEME_COLORS[project.color as ThemeColorKey].bg
+                )}
               >
-                {/* Abstract decoration inside card header */}
-                <div className="absolute inset-0 opacity-20">
-                  <div className="absolute top-4 left-4 w-16 h-16 border-2 border-white/40 rounded-full" />
-                  <div className="absolute bottom-4 right-6 w-12 h-12 border-2 border-white/40 rounded-lg rotate-12" />
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 border-2 border-white/30 rounded-2xl rotate-45" />
-                </div>
+                {project.image ? (
+                  <motion.div 
+                    className="relative w-full h-full"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </motion.div>
+                ) : (
+                  /* Abstract decoration fallback */
+                  <div className="absolute inset-0 opacity-20">
+                    <div className="absolute top-4 left-4 w-16 h-16 border-2 border-white/40 rounded-full" />
+                    <div className="absolute bottom-4 right-6 w-12 h-12 border-2 border-white/40 rounded-lg rotate-12" />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 border-2 border-white/30 rounded-2xl rotate-45" />
+                  </div>
+                )}
               </div>
 
               {/* Card body */}
-              <div className="p-6">
+              <div className="p-6 flex flex-col flex-grow">
                 <div className="flex gap-2 mb-4 flex-wrap">
                   {project.tags.map((tag) => (
                     <span
@@ -300,10 +327,22 @@ export default function Home() {
                 <p className="text-muted-foreground text-sm leading-relaxed mb-6">
                   {project.description}
                 </p>
-                <Button href={project.url} className="w-full text-sm py-2.5">
-                  View Project
-                  <ArrowUpRight className="w-4 h-4" strokeWidth={2.5} />
-                </Button>
+                <div className="mt-auto flex gap-2">
+                  {project.github && <Button 
+                    href={project.github} 
+                    className={cn("w-full text-sm p-1.5", THEME_COLORS[project.color as ThemeColorKey].bg, THEME_COLORS[project.color as ThemeColorKey].text)}
+                  >
+                    GitHub
+                    <ArrowUpRight className="w-4 h-4" strokeWidth={2.5} />
+                  </Button>}
+                  {project.live && <Button 
+                    href={project.live} 
+                    className={cn("w-full text-sm p-1.5", THEME_COLORS[project.color as ThemeColorKey].bg, THEME_COLORS[project.color as ThemeColorKey].text)}
+                  >
+                    Live
+                    <ArrowUpRight className="w-4 h-4" strokeWidth={2.5} />
+                  </Button>}
+                </div>
               </div>
             </Card>
           ))}

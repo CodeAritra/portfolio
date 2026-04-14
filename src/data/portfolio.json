@@ -12,23 +12,23 @@
     ]
   },
   "marquee": [
-    "JavaScript", "React.js", "Node.js", "Express.js", "MongoDB",
+    "JavaScript","TypeScript","Next.js", "React.js", "Node.js", "Express.js", "MongoDB","PostgreSQL","MySQL",
     "Socket.IO", "REST APIs", "JWT Auth", "Tailwind CSS",
-    "DSA", "System Design Basics"
+    "DSA", "System Design","Amazon Web Services","Google Cloud Platform","Git","GitHub","Postman"
   ],
   "experience": [
     {
       "role": "Software Engineer Intern",
-      "company": "SaaS Product Company",
-      "period": "2025 — Present",
+      "company": "ARMB",
+      "period": "February 2026 — Present",
       "description": "Working on scalable SaaS features, contributing to backend APIs and frontend components. Focus on performance, clean architecture, and production-level code practices.",
       "color": "accent"
     },
     {
-      "role": "Frontend Developer Intern",
-      "company": "Client Project",
-      "period": "2024 — 2025",
-      "description": "Developed responsive frontend interfaces using React and Tailwind CSS. Collaborated on real-world client requirements and improved UI performance and usability.",
+      "role": "Full Stack Developer Intern",
+      "company": "Arinova Studio",
+      "period": "October 2025 — December 2025",
+      "description": "Developed responsive frontend interfaces using Next.js and collaborated on real-world client requirements and improved UI performance and usability.",
       "color": "secondary"
     }
   ],
@@ -43,26 +43,57 @@
     { "name": "DSA (C++)", "level": 75, "color": "quaternary" }
   ],
   "projects": [
-    {
-      "title": "Real-time Chat App",
-      "description": "Built a real-time chat application with rooms, messaging, and scalable architecture using Socket.IO and MERN stack.",
-      "tags": ["React", "Node.js", "Socket.IO", "MongoDB"],
-      "color": "accent",
-      "url": "#"
-    },
-    {
-      "title": "Attendance Tracker App",
-      "description": "Full-stack attendance management system with authentication, role-based access, and CRUD operations.",
-      "tags": ["MERN", "JWT", "REST APIs"],
-      "color": "secondary",
-      "url": "#"
-    },
-    {
-      "title": "Book Store App",
-      "description": "Role-based e-commerce platform with payment integration, image uploads, and admin dashboard.",
-      "tags": ["MERN", "Cloudinary", "Razorpay"],
-      "color": "tertiary",
-      "url": "#"
-    }
-  ]
+  {
+    "title": "Attendance Tracker App",
+    "description": "Full-stack attendance management system with authentication, role-based access, and CRUD operations.",
+    "tags": ["React", "Node.js","Express.js","MongoDB", "JWT", "REST APIs"],
+    "color": "secondary",
+    "image": "/projects/attendance-tracker.jpg",
+    "github": "https://github.com/CodeAritra/attendance_tracker",
+    "live": "https://attendance-tracker-c86g.onrender.com/"
+  },
+  {
+    "title": "Book Store App",
+    "description": "Role-based e-commerce platform with payment integration, image uploads, and admin dashboard.",
+    "tags": ["React", "Node.js","Express.js","MongoDB", "JWT", "REST APIs", "Cloudinary", "Razorpay"],
+    "color": "tertiary",
+    "image": "/projects/book-store.png",
+    "github": "https://github.com/CodeAritra/BOOK-STORE",
+    "live": "https://book-store-jw66.onrender.com/"
+  },
+  {
+    "title": "AI Quiz App",
+    "description": "AI-powered quiz application with personalized learning paths and progress tracking.",
+    "tags": ["React", "Node.js","Express.js","MongoDB", "JWT", "REST APIs"],
+    "color": "accent",
+    "image": "/projects/ai-quiz.png",
+    "github": "https://github.com/CodeAritra/AI-Quiz-App",
+    "live": "https://ai-quiz-app-blush.vercel.app/"
+  },
+  {
+    "title": "Smart Lost And Found",
+    "description": "AI-powered lost & found platform that securely matches items without exposing sensitive data.",
+    "tags": ["React", "Node.js","Express.js","MongoDB", "JWT", "REST APIs"],
+    "color": "tertiary",
+    "image": "/projects/lost-found.png",
+    "github": "https://github.com/CodeAritra/smart-lost-and-found",
+    "live": "https://smart-lost-and-found-nu.vercel.app/"
+  },
+  {
+    "title": "Real-time Chat App",
+    "description": "Real-time chat app with rooms and messaging using Socket.IO.",
+    "tags": ["React", "Node.js", "Socket.IO", "MongoDB", "Express.js"],
+    "color": "accent",
+    "image": "/projects/chat-app.png",
+    "github": "https://github.com/CodeAritra/ChatRoom"
+  },
+  {
+    "title": "QR Menu",
+    "description": "QR-based food ordering app with customer ordering and admin panel for managing menus and orders.",
+    "tags": ["React", "Firebase"],
+    "color": "secondary",
+    "image": "/projects/qr-menu.png",
+    "github": "https://github.com/CodeAritra/qr-menu"
+  }
+]
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import { SmoothScroll } from "@/components/ui/SmoothScroll";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -27,7 +28,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${outfit.variable} ${plusJakartaSans.variable} font-sans antialiased bg-background text-foreground transition-colors duration-300`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
+          <SmoothScroll>
+            {children}
+          </SmoothScroll>
         </ThemeProvider>
       </body>
     </html>

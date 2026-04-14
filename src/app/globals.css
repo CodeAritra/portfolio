@@ -2,6 +2,7 @@
 
 /* ─── Design Tokens (Tailwind 4 @theme) ──────────────────────── */
 @theme {
+  --nav-height: 80px;
   /* Colors — Light mode base */
   --color-background: #FFFDF5;
   --color-foreground: #1E293B;
@@ -29,11 +30,15 @@
   --font-sans: var(--font-plus-jakarta), "Plus Jakarta Sans", system-ui, sans-serif;
 
   /* Shadows — Hard "Pop" shadows (no blur) */
+  --shadow-pop-accent: 8px 8px 0px 0px #8B5CF6;
   --shadow-pop: 4px 4px 0px 0px #1E293B;
   --shadow-pop-hover: 6px 6px 0px 0px #1E293B;
   --shadow-pop-active: 2px 2px 0px 0px #1E293B;
   --shadow-pop-lg: 8px 8px 0px 0px #E2E8F0;
   --shadow-pop-pink: 8px 8px 0px 0px #F472B6;
+  --shadow-pop-secondary: 8px 8px 0px 0px #F472B6;
+  --shadow-pop-tertiary: 8px 8px 0px 0px #FBBF24;
+  --shadow-pop-quaternary: 8px 8px 0px 0px #34D399;
 
   /* Animations */
   --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -42,9 +47,14 @@
 /* ─── Base layer ─────────────────────────────────────────────── */
 @layer base {
   :root {
+    --nav-height: 80px;
     --background: #FFFDF5;
     --foreground: #1E293B;
     --shadow-color: #1E293B;
+  }
+
+  html {
+    scroll-padding-top: var(--nav-height);
   }
 
   .dark {
@@ -88,7 +98,7 @@
 @layer utilities {
   /* Dot grid background */
   .bg-dot-grid {
-    background-image: radial-gradient(circle, #CBD5E1 1px, transparent 1px);
+    background-image: radial-gradient(var(--border) 1px, transparent 1px);
     background-size: 24px 24px;
   }
 
@@ -101,12 +111,15 @@
     box-shadow: 4px 4px 0px 0px var(--shadow-color);
   }
 
+  /* Hard shadows for brand colors */
+  .shadow-pop-accent { box-shadow: 8px 8px var(--color-accent); }
+  .shadow-pop-secondary { box-shadow: 8px 8px var(--color-secondary); }
+  .shadow-pop-tertiary { box-shadow: 8px 8px var(--color-tertiary); }
+  .shadow-pop-quaternary { box-shadow: 8px 8px var(--color-quaternary); }
+  .shadow-pop-pink { box-shadow: 8px 8px #F472B6; }
+
   .shadow-pop-lg {
     box-shadow: 8px 8px 0px 0px var(--color-border);
-  }
-
-  .shadow-pop-pink {
-    box-shadow: 8px 8px 0px 0px #F472B6;
   }
 
   .hover\:shadow-pop-hover:hover {

@@ -4,24 +4,20 @@ import { ReactNode } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
+import { THEME_COLORS, ThemeColorKey } from "@/lib/colors";
+
 interface CardProps {
   children: ReactNode;
   className?: string;
   delay?: number;
-  shadowColor?: "default" | "pink" | "accent";
+  shadowColor?: ThemeColorKey;
 }
-
-const shadowMap = {
-  default: "shadow-pop-lg",
-  pink: "shadow-pop-pink",
-  accent: "shadow-pop",
-};
 
 export function Card({
   children,
   className,
   delay = 0,
-  shadowColor = "default",
+  shadowColor = "default"
 }: CardProps) {
   return (
     <motion.div
@@ -40,11 +36,11 @@ export function Card({
       }}
       className={cn(
         "bg-card border-2 border-foreground rounded-2xl p-6 relative group",
-        shadowMap[shadowColor],
+        THEME_COLORS[shadowColor].shadow,
         className
       )}
     >
-      <div className="relative z-10">{children}</div>
+      <div className="relative z-10 h-full flex flex-col">{children}</div>
     </motion.div>
   );
 }
