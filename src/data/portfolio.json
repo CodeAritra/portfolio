@@ -8,11 +8,11 @@
     "socials": [
       { "platform": "GitHub", "url": "https://github.com/CodeAritra", "icon": "FaGithub" },
       { "platform": "LinkedIn", "url": "https://www.linkedin.com/in/aritra-dhank/", "icon": "FaLinkedin" },
-      { "platform": "Resume", "url": "#", "icon": "FaFileLines" }
+      { "platform": "Resume", "url": "https://drive.google.com/file/d/1RjrpKOra6FuL9gZfW_RZXKtPYJ_Pz7xd/view", "icon": "FaFileLines" }
     ]
   },
   "marquee": [
-    "JavaScript","TypeScript","Next.js", "React.js", "Node.js", "Express.js", "MongoDB","PostgreSQL","MySQL",
+    "JavaScript","TypeScript","Next.js", "React.js","React Native", "Node.js", "Express.js", "MongoDB","PostgreSQL","MySQL","Docker","Redis",
     "Socket.IO", "REST APIs", "JWT Auth", "Tailwind CSS",
     "DSA", "System Design","Amazon Web Services","Google Cloud Platform","Git","GitHub","Postman"
   ],

@@ -22,6 +22,8 @@ import { Section } from "@/components/ui/Section";
 import { Navbar } from "@/components/ui/Navbar";
 import { Marquee } from "@/components/ui/Marquee";
 import OrbitingSkills from "@/components/ui/orbiting-skills";
+import { Typewriter } from "@/components/ui/Typewriter";
+import { ScrollText } from "@/components/ui/ScrollText";
 import portfolioData from "@/data/portfolio.json";
 
 /* ─── Icon resolver ───────────────────────────────── */
@@ -41,14 +43,17 @@ function FloatingShape({
   className,
   shape = "circle",
   delay = 0,
+  floatType = 1,
 }: {
   color: string;
   size: string;
   className: string;
   shape?: "circle" | "square" | "triangle";
   delay?: number;
+  floatType?: 1 | 2 | 3;
 }) {
-  const shapeClass = shape === "circle" ? "rounded-full" : shape === "square" ? "rounded-lg rotate-12" : "";
+  const shapeClass = shape === "circle" ? "rounded-full" : shape === "square" ? "rounded-lg" : "";
+  const floatAnimClass = floatType === 1 ? "animate-float-1" : floatType === 2 ? "animate-float-2" : "animate-float-3";
   return (
     <motion.div
       initial={{ scale: 0, opacity: 0 }}
@@ -59,6 +64,7 @@ function FloatingShape({
         size,
         THEME_COLORS[color as ThemeColorKey].bg,
         shapeClass,
+        floatAnimClass,
         className
       )}
     />
@@ -90,10 +96,10 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.5 }}
-              className="text-sm md:text-base font-bold uppercase tracking-[0.2em] text-muted-foreground mb-4 flex items-center gap-2"
+              className="text-sm md:text-base font-bold uppercase tracking-[0.2em] text-accent dark:text-tertiary mb-4 flex items-center gap-2"
             >
-              <Sparkles className="w-4 h-4 text-tertiary" strokeWidth={2.5} />
-              {profile.role}
+              <Sparkles className="w-4 h-4 text-accent dark:text-tertiary" strokeWidth={2.5} />
+              <Typewriter texts={["Software Engineer", "Full Stack Developer"]} />
             </motion.p>
 
             <motion.h1
@@ -103,7 +109,7 @@ export default function Home() {
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-extrabold leading-[1.05] mb-6"
             >
               Hi, I&apos;m{" "}
-              <span className="text-accent squiggle-underline whitespace-nowrap">{profile.name}</span>
+              <span className="text-accent dark:text-tertiary squiggle-underline whitespace-nowrap">{profile.name}</span>
             </motion.h1>
 
             <motion.p
@@ -121,7 +127,7 @@ export default function Home() {
               transition={{ delay: 0.7, duration: 0.5 }}
               className="flex flex-wrap gap-4"
             >
-              <Button href="#contact">
+              <Button href="#contact" className="dark:bg-tertiary">
                 Get In Touch
                 <ArrowRight className="w-5 h-5" strokeWidth={2.5} />
               </Button>
@@ -162,7 +168,7 @@ export default function Home() {
             <div className="absolute inset-4 bg-secondary/10 rounded-3xl rotate-3 z-0" />
 
             <div className="relative z-10 p-4 md:p-8">
-              <div className="aspect-square bg-quaternary border-4 border-foreground rounded-[32px] md:rounded-[48px] overflow-hidden shadow-pop relative">
+              <div className="aspect-square bg-quaternary border-4 border-foreground rounded-xl md:rounded-[48px] overflow-hidden shadow-pop relative">
                 <Image
                   src="/ari.jpeg"
                   alt={profile.name}
@@ -176,15 +182,14 @@ export default function Home() {
             </div>
 
             {/* Floating decorations */}
-            <FloatingShape color="accent" size="w-14 h-14" className="-top-6 -right-6" shape="circle" delay={0.8} />
-            <FloatingShape color="tertiary" size="w-20 h-20" className="-bottom-8 -left-8" shape="square" delay={1.0} />
-            <FloatingShape color="secondary" size="w-8 h-8" className="top-1/4 -right-10" shape="circle" delay={1.2} />
+            <FloatingShape color="accent" size="w-14 h-14" className="-top-6 -right-6" shape="circle" delay={0.8} floatType={1} />
+            <FloatingShape color="tertiary" size="w-20 h-20" className="-bottom-8 -left-8" shape="square" delay={1.0} floatType={2} />
+            <FloatingShape color="secondary" size="w-8 h-8" className="top-1/4 -right-10" shape="circle" delay={1.2} floatType={3} />
           </motion.div>
         </div>
       </Section>
 
-      {/* ═══ Marquee ════════════════════════════════ */}
-      <Marquee items={marquee} />
+      <ScrollText roles={["Software Engineer", "Full Stack Developer"]} />
 
       {/* ═══ Experience ═════════════════════════════ */}
       <Section
@@ -264,6 +269,9 @@ export default function Home() {
         </div>
       </Section>
 
+      {/* ═══ Marquee ════════════════════════════════ */}
+      <Marquee items={marquee} />
+
       {/* ═══ Recent Work ════════════════════════════ */}
       <Section
         title="Recent Work"
@@ -275,7 +283,7 @@ export default function Home() {
           {projects.map((project, i) => (
             <Card
               key={project.title}
-              className="overflow-hidden !p-0 h-full flex flex-col"
+              className="overflow-hidden p-0! h-full flex flex-col"
               delay={i * 0.12}
               shadowColor={project.color as ThemeColorKey}
             >
@@ -287,7 +295,7 @@ export default function Home() {
                 )}
               >
                 {project.image ? (
-                  <motion.div 
+                  <motion.div
                     className="relative w-full h-full"
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.4 }}
@@ -310,7 +318,7 @@ export default function Home() {
               </div>
 
               {/* Card body */}
-              <div className="p-6 flex flex-col flex-grow">
+              <div className="p-6 flex flex-col grow">
                 <div className="flex gap-2 mb-4 flex-wrap">
                   {project.tags.map((tag) => (
                     <span
@@ -328,15 +336,15 @@ export default function Home() {
                   {project.description}
                 </p>
                 <div className="mt-auto flex gap-2">
-                  {project.github && <Button 
-                    href={project.github} 
+                  {project.github && <Button
+                    href={project.github}
                     className={cn("w-full text-sm p-1.5", THEME_COLORS[project.color as ThemeColorKey].bg, THEME_COLORS[project.color as ThemeColorKey].text)}
                   >
                     GitHub
                     <ArrowUpRight className="w-4 h-4" strokeWidth={2.5} />
                   </Button>}
-                  {project.live && <Button 
-                    href={project.live} 
+                  {project.live && <Button
+                    href={project.live}
                     className={cn("w-full text-sm p-1.5", THEME_COLORS[project.color as ThemeColorKey].bg, THEME_COLORS[project.color as ThemeColorKey].text)}
                   >
                     Live
